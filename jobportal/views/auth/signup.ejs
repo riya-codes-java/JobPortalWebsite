@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<div class="auth-box">
+  <div class="auth-side"><h2>Join JobPortal</h2><p>Students find jobs. Recruiters find talent. Pick your role and get started.</p></div>
+  <div class="auth-form">
+    <h2>Create account</h2>
+    <form action="/signup" method="POST">
+      <label>I am a</label>
+      <select name="role" required onchange="document.getElementById('co').style.display = this.value==='recruiter' ? 'block' : 'none'">
+        <option value="student">Job Seeker / Student</option>
+        <option value="recruiter">Recruiter / Job Giver</option>
+      </select>
+      <label>Name</label><input name="name" required>
+      <label>Email</label><input type="email" name="email" required>
+      <label>Password (min 6)</label><input type="password" name="password" minlength="6" required>
+      <div id="co" style="display:none"><label>Company</label><input name="company"></div>
+      <button class="btn btn-block">Create account</button>
+    </form>
+    <p class="muted">Already registered? <a href="/login">Login</a></p>
+  </div>
+</div>
+<%- include('../partials/footer') %>

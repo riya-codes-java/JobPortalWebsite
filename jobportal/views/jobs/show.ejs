@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+<div class="detail">
+  <div class="detail-head">
+    <div class="avatar big"><%= job.company.charAt(0).toUpperCase() %></div>
+    <div>
+      <h1><%= job.title %></h1>
+      <p class="company"><%= job.company %></p>
+      <div class="tags">
+        <span class="tag">📍 <%= job.location %></span>
+        <span class="tag tag-type"><%= job.jobType %></span>
+        <% if (job.salary) { %><span class="tag tag-pay">💰 <%= job.salary %></span><% } %>
+      </div>
+    </div>
+  </div>
+  <h3>About the job</h3>
+  <p style="white-space:pre-line"><%= job.description %></p>
+
+  <div class="apply-box">
+    <% if (!user) { %>
+      <p>Want to apply for this job?</p>
+      <a class="btn" href="/login">Login to apply</a>
+      <a class="btn btn-light" href="/signup">Create account</a>
+    <% } else if (user.role === 'student') { %>
+      <% if (hasApplied) { %><span class="badge pending">✔ You already applied</span>
+      <% } else { %>
+        <form action="/applications/apply/<%= job._id %>" method="POST">
+          <label>Cover letter (optional)</label>
+          <textarea name="coverLetter" rows="4" placeholder="Tell the recruiter why you are a good fit…"></textarea>
+          <button class="btn">Apply now</button>
+        </form>
+      <% } %>
+    <% } else { %>
+      <p class="muted">Recruiter accounts cannot apply to jobs.</p>
+    <% } %>
+  </div>
+</div>
+<%- include('../partials/footer') %>

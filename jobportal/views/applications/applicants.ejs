@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>Applicants</h1><p><%= job.title %> · <%= job.company %></p></div>
+<% if (!applications.length) { %><div class="empty">No applicants yet.</div><% } %>
+<% applications.forEach(a => { %>
+  <div class="row-card">
+    <div>
+      <h3><%= a.applicant.name %></h3>
+      <p class="muted"><%= a.applicant.email %></p>
+      <% if (a.coverLetter) { %><p style="white-space:pre-line"><%= a.coverLetter %></p><% } %>
+    </div>
+    <div class="actions">
+      <span class="badge <%= a.status %>"><%= a.status %></span>
+      <% if (a.status === 'pending') { %>
+        <form class="inline" action="/applications/<%= a._id %>/status?_method=PUT" method="POST">
+          <input type="hidden" name="status" value="accepted"><button class="btn btn-sm">Accept</button>
+        </form>
+        <form class="inline" action="/applications/<%= a._id %>/status?_method=PUT" method="POST">
+          <input type="hidden" name="status" value="rejected"><button class="btn btn-sm btn-danger">Reject</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+<% }) %>
+<%- include('../partials/footer') %>

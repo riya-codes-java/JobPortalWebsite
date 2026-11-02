@@ -1,0 +1,26 @@
+<%
+  const company = job.company || 'Company';
+  const desc = job.description || '';
+  const posted = job.createdAt
+    ? new Date(job.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    : '';
+%>
+<article class="job-card">
+  <div class="job-top">
+    <div class="avatar"><%= company.charAt(0).toUpperCase() %></div>
+    <div>
+      <h3><a href="/jobs/<%= job._id %>"><%= job.title || 'Untitled job' %></a></h3>
+      <p class="company"><%= company %></p>
+    </div>
+  </div>
+  <div class="tags">
+    <% if (job.location) { %><span class="tag">Location: <%= job.location %></span><% } %>
+    <% if (job.jobType) { %><span class="tag tag-type"><%= job.jobType %></span><% } %>
+    <% if (job.salary) { %><span class="tag tag-pay">Salary: <%= job.salary %></span><% } %>
+  </div>
+  <p class="desc"><%= desc.length > 110 ? desc.slice(0, 110) + '...' : desc %></p>
+  <div class="job-bottom">
+    <small><%= posted %></small>
+    <a class="btn btn-sm" href="/jobs/<%= job._id %>">View details</a>
+  </div>
+</article>

@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<div class="auth-box">
+  <div class="auth-side"><h2>Welcome back!</h2><p>Login to apply for jobs or manage your postings.</p></div>
+  <div class="auth-form">
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+      <label>Email</label><input type="email" name="email" required>
+      <label>Password</label><input type="password" name="password" required>
+      <button class="btn btn-block">Login</button>
+    </form>
+    <p class="muted">New here? <a href="/signup">Create an account</a></p>
+  </div>
+</div>
+<%- include('../partials/footer') %>

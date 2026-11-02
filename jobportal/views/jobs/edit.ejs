@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<div class="card narrow">
+  <h2>Edit job</h2>
+  <form action="/jobs/<%= job._id %>?_method=PUT" method="POST">
+    <%- include('_form', { job }) %>
+    <button class="btn">Update</button>
+  </form>
+</div>
+<%- include('../partials/footer') %>

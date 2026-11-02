@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobPortal – Find your dream job</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="logo">💼</span> Job<span>Portal</span></a>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger" aria-label="Menu">☰</label>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/jobs">Browse Jobs</a>
+      <% if (user) { %>
+        <a href="/dashboard">Dashboard</a>
+        <% if (user.role === 'recruiter') { %>
+          <a href="/jobs/mine">My Jobs</a>
+          <a class="nav-btn" href="/jobs/new">+ Post a Job</a>
+        <% } else { %>
+          <a href="/applications/mine">My Applications</a>
+        <% } %>
+        <form action="/logout" method="POST" class="inline">
+          <button class="nav-user" title="Logout">👤 <%= user.name.split(' ')[0] %> · Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/login">Login</a>
+        <a class="nav-btn" href="/signup">Sign up</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
+<main class="container">
+<% if (flash) { %><div class="flash"><%= flash %></div><% } %>

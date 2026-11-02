@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>Browse Jobs</h1><p><%= jobs.length %> job(s) found</p></div>
+<form class="filters" method="GET" action="/jobs">
+  <input name="q" placeholder="Job title" value="<%= query.q || '' %>">
+  <input name="location" placeholder="Location" value="<%= query.location || '' %>">
+  <select name="jobType">
+    <option value="">Any type</option>
+    <% ['Full-time','Part-time','Internship','Remote'].forEach(t => { %>
+      <option <%= query.jobType === t ? 'selected' : '' %>><%= t %></option>
+    <% }) %>
+  </select>
+  <button class="btn">Search</button>
+</form>
+<% if (!jobs.length) { %><div class="empty">😕 No jobs found.</div><% } else { %>
+  <div class="job-grid">
+    <% jobs.forEach(job => { %><%- include('../partials/jobCard', { job }) %><% }) %>
+  </div>
+<% } %>
+<%- include('../partials/footer') %>

@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <h1>Find the job that <span>fits your future</span></h1>
+  <p>Browse openings from top companies, apply in one click, and track every application.</p>
+  <form class="search-bar" action="/#jobs" method="GET">
+    <input name="q" placeholder="🔍 Job title or keyword" value="<%= query.q || '' %>">
+    <input name="location" placeholder="📍 Location" value="<%= query.location || '' %>">
+    <button class="btn">Search</button>
+  </form>
+  <div class="stats">
+    <div><b><%= totalJobs %></b><span>Live jobs</span></div>
+    <div><b><%= companies %></b><span>Companies</span></div>
+    <div><b>Free</b><span>For students</span></div>
+  </div>
+</section>
+
+<section id="jobs">
+  <div class="section-head">
+    <h2><%= (query.q || query.location) ? 'Search results' : 'Latest job openings' %></h2>
+    <a href="/jobs">See all jobs →</a>
+  </div>
+  <% if (!jobs.length) { %>
+    <div class="empty">😕 No jobs found. Try a different keyword.</div>
+  <% } else { %>
+    <div class="job-grid">
+      <% jobs.forEach(job => { %><%- include('partials/jobCard', { job }) %><% }) %>
+    </div>
+  <% } %>
+</section>
+
+<section class="steps">
+  <h2>How it works</h2>
+  <div class="grid">
+    <div class="step"><span>1</span><h3>Create account</h3><p>Sign up as a student or a recruiter in seconds.</p></div>
+    <div class="step"><span>2</span><h3>Find or post jobs</h3><p>Students search openings, recruiters publish new ones.</p></div>
+    <div class="step"><span>3</span><h3>Apply &amp; hire</h3><p>Apply with a cover letter and track status live.</p></div>
+  </div>
+</section>
+
+<% if (!user) { %>
+<section class="cta">
+  <h2>Ready to get started?</h2>
+  <p>Join as a job seeker or as a recruiter.</p>
+  <a class="btn btn-white" href="/signup">Create free account</a>
+</section>
+<% } %>
+
+<%- include('partials/footer') %>

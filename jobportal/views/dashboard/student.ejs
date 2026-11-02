@@ -1,0 +1,7 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>Welcome back, <%= user.name %> 👋</h1><p>Student dashboard</p></div>
+<div class="grid">
+  <div class="stat-card"><b><%= applied %></b><span>Applications sent</span><a class="btn btn-sm" href="/applications/mine">View all</a></div>
+  <div class="stat-card alt"><b>🔍</b><span>Discover new openings</span><a class="btn btn-sm" href="/jobs">Browse jobs</a></div>
+</div>
+<%- include('../partials/footer') %>

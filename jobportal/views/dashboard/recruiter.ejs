@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>Welcome back, <%= user.name %> 👋</h1><p>Recruiter dashboard<% if (user.company) { %> · <%= user.company %><% } %></p></div>
+<div class="grid">
+  <div class="stat-card"><b><%= jobCount %></b><span>Jobs posted</span><a class="btn btn-sm" href="/jobs/mine">Manage jobs</a></div>
+  <div class="stat-card alt"><b><%= totalApplicants %></b><span>Total applicants</span><a class="btn btn-sm" href="/jobs/mine">Review</a></div>
+  <div class="stat-card dark"><b>＋</b><span>Hiring? Add an opening</span><a class="btn btn-sm btn-white" href="/jobs/new">Post a job</a></div>
+</div>
+<%- include('../partials/footer') %>

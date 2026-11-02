@@ -1,0 +1,30 @@
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <a class="brand" href="/"><span class="logo">💼</span> Job<span>Portal</span></a>
+      <p>Connecting talented students with great companies. Find your next opportunity or your next hire.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="/">Home</a>
+      <a href="/jobs">Browse Jobs</a>
+      <% if (user) { %><a href="/dashboard">Dashboard</a><% } else { %><a href="/login">Login</a><% } %>
+    </div>
+    <div class="footer-col">
+      <h4>For Students</h4>
+      <a href="/jobs">Find jobs</a>
+      <a href="/signup">Create profile</a>
+      <a href="/applications/mine">Track applications</a>
+    </div>
+    <div class="footer-col">
+      <h4>For Recruiters</h4>
+      <a href="/signup">Register company</a>
+      <a href="/jobs/new">Post a job</a>
+      <a href="/jobs/mine">Manage jobs</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; <%= new Date().getFullYear() %> JobPortal. All rights reserved.</div>
+</footer>
+</body>
+</html>

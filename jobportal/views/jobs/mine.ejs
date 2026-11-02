@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>My posted jobs</h1><a class="btn" href="/jobs/new">+ Post a job</a></div>
+<% if (!jobs.length) { %><div class="empty">You haven't posted any jobs yet.</div><% } %>
+<% jobs.forEach(job => { %>
+  <div class="row-card">
+    <div>
+      <h3><%= job.title %></h3>
+      <p class="muted"><%= job.company %> · <%= job.location %> · <%= job.jobType %></p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-sm" href="/applications/job/<%= job._id %>">Applicants</a>
+      <a class="btn btn-sm btn-light" href="/jobs/<%= job._id %>/edit">Edit</a>
+      <form class="inline" action="/jobs/<%= job._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this job?')">
+        <button class="btn btn-sm btn-danger">Delete</button>
+      </form>
+    </div>
+  </div>
+<% }) %>
+<%- include('../partials/footer') %>

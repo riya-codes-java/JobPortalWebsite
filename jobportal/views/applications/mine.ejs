@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<div class="page-head"><h1>My applications</h1></div>
+<% if (!applications.length) { %><div class="empty">No applications yet. <a href="/jobs">Browse jobs</a></div><% } %>
+<% applications.forEach(a => { %>
+  <% if (a.job) { %>
+  <div class="row-card">
+    <div>
+      <h3><a href="/jobs/<%= a.job._id %>"><%= a.job.title %></a></h3>
+      <p class="muted"><%= a.job.company %> · <%= a.job.location %></p>
+    </div>
+    <span class="badge <%= a.status %>"><%= a.status %></span>
+  </div>
+  <% } %>
+<% }) %>
+<%- include('../partials/footer') %>

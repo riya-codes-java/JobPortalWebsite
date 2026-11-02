@@ -1,0 +1,11 @@
+<label>Title</label><input name="title" required value="<%= job.title || '' %>">
+<label>Company</label><input name="company" required value="<%= job.company || user.company || '' %>">
+<label>Location</label><input name="location" required value="<%= job.location || '' %>">
+<label>Salary</label><input name="salary" value="<%= job.salary || '' %>">
+<label>Job type</label>
+<select name="jobType">
+  <% ['Full-time','Part-time','Internship','Remote'].forEach(t => { %>
+    <option <%= job.jobType === t ? 'selected' : '' %>><%= t %></option>
+  <% }) %>
+</select>
+<label>Description</label><textarea name="description" rows="6" required><%= job.description || '' %></textarea>
